@@ -1,0 +1,22 @@
+version: '3'
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+services:
+  jrebel-popeye:
+    image: thieucong98/jrebel:version1.0
+    env_file: ./config/jrebel/.env
+    volumes:
+      - ./data/:/data/
+    ports:
+      - "8888:8081"
+    working_dir: /data
+    networks:
+      - backend
+   
+volumes:
+  data: {}
